@@ -19,6 +19,7 @@ create table financial_obligations (
   current_balance numeric default 0, -- For cards/loans
   fixed_payment_amount numeric default 0, -- For loans/recurring
   credit_limit numeric, -- Optional
+  months_to_pay integer default 1,
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 

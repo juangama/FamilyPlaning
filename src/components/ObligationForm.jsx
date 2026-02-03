@@ -15,6 +15,7 @@ export default function ObligationForm({ onClose, onSave }) {
         current_balance: '',
         fixed_payment_amount: '',
         credit_limit: '',
+        months_to_pay: '1',
     })
     const [loading, setLoading] = useState(false)
 
@@ -30,6 +31,7 @@ export default function ObligationForm({ onClose, onSave }) {
                 name: formData.name,
                 type,
                 due_day: parseInt(formData.due_day),
+                months_to_pay: formData.months_to_pay ? parseInt(formData.months_to_pay) : 1,
             }
 
             if (type === 'credit_card') {
@@ -140,6 +142,19 @@ export default function ObligationForm({ onClose, onSave }) {
                                 value={formData.credit_limit}
                                 onChange={handleChange}
                             />
+                            <div style={{ marginTop: '0.5rem' }}>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', color: 'hsl(var(--color-text-secondary))' }}>
+                                    Meses a diferir (Proyección)
+                                </label>
+                                <input
+                                    name="months_to_pay"
+                                    type="number"
+                                    min="1"
+                                    className="input"
+                                    value={formData.months_to_pay}
+                                    onChange={handleChange}
+                                />
+                            </div>
                         </>
                     )}
 
@@ -162,6 +177,19 @@ export default function ObligationForm({ onClose, onSave }) {
                                 onChange={handleChange}
                                 required
                             />
+                            <div style={{ marginTop: '0.5rem' }}>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', color: 'hsl(var(--color-text-secondary))' }}>
+                                    Meses a Pagar (Plazo)
+                                </label>
+                                <input
+                                    name="months_to_pay"
+                                    type="number"
+                                    min="1"
+                                    className="input"
+                                    value={formData.months_to_pay}
+                                    onChange={handleChange}
+                                />
+                            </div>
                         </>
                     )}
 
